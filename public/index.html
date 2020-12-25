@@ -8,12 +8,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
     <style>
+      /*stretch html body div root to occupy whole window*/
       html, body {
         height: 100%;
       }
-
       #root {
         height: 100%;
+      }
+
+      /*disable spinner for input type number*/
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
       }
     </style>
 
