@@ -53,7 +53,7 @@ export default function PlateauTab(props) {
 
     return(
         <Grid container>
-            <Typography variant="h5">Plateau</Typography>
+            <Typography variant="subtitle1">Plateau</Typography>
             <Grid container className={classes.container}>
                {["phi", "theta"].map((coordinate, i) => 
                     <CustomTextField
@@ -77,8 +77,8 @@ export default function PlateauTab(props) {
 
             <Grid className={classes.submitButton} container alignContent="center">
                 <CustomButton>
-                    <Grid container justify="space-between">
-                        <SendRoundedIcon />
+                    <Grid container justify="space-between" alignItems="center">
+                        <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>
                     </Grid>
                 </CustomButton> 

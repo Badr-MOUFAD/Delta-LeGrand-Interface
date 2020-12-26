@@ -64,9 +64,9 @@ export default function NacellePlateauTab(props) {
 
     return(
         <Grid container>
-            <Typography variant="h5">Plateau</Typography>
+            <Typography variant="subtitle1">Plateau</Typography>
             <Grid container className={classes.container} style={{ marginTop: "25px"}}>
-                <Typography variant='subtitle1'>Position</Typography>
+                <Typography variant='subtitle2'>Position</Typography>
                 <Grid container>
                     {["x", "y", "z"].map((coordinate, i) => 
                     <CustomTextField
@@ -90,7 +90,7 @@ export default function NacellePlateauTab(props) {
             </Grid>
 
             <Grid container className={classes.container} style={{ marginTop: "25px"}}>
-                <Typography variant='subtitle1'>Inclinaison</Typography>
+                <Typography variant='subtitle2'>Inclinaison</Typography>
                 <Grid container>
                     {["phi", "theta"].map((coordinate, i) => 
                     <CustomTextField
@@ -115,8 +115,8 @@ export default function NacellePlateauTab(props) {
 
             <Grid className={classes.submitButton} container alignContent="center">
                 <CustomButton>
-                    <Grid container justify="space-between">
-                        <SendRoundedIcon />
+                    <Grid container justify="space-between" alignItems="center">
+                        <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>
                     </Grid>
                 </CustomButton>

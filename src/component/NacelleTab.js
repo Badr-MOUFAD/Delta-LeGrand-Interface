@@ -56,7 +56,7 @@ export default function NacelleTab(props) {
 
     return(
         <Grid container>
-            <Typography variant="h5">Nacelle</Typography>
+            <Typography variant="subtitle1">Nacelle</Typography>
             <Grid container className={classes.container}>
                {["x", "y", "z"].map((coordinate, i) => 
                     <CustomTextField
@@ -80,8 +80,8 @@ export default function NacelleTab(props) {
 
             <Grid className={classes.submitButton} container alignContent="center">
                 <CustomButton>
-                    <Grid container justify="space-between">
-                        <SendRoundedIcon />
+                    <Grid container justify="space-between" alignItems="center">
+                        <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>
                     </Grid>
                 </CustomButton>
