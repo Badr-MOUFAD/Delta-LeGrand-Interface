@@ -19,7 +19,8 @@ function createWindow() {
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,
       //preload: path.join(__dirname, 'preload.js'),
-    }
+    },
+    frame: false
   })
 
   win.autoHideMenuBar = true;

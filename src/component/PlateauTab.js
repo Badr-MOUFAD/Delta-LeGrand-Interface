@@ -12,7 +12,7 @@ const maxPhi = 180;
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        paddingLeft: "20px"
+        paddingLeft: "0px"
     },
     textField: {
         marginTop: "20px",
@@ -79,7 +79,7 @@ export default function PlateauTab(props) {
                 <CustomButton>
                     <Grid container justify="space-between">
                         <SendRoundedIcon />
-                        <Typography>Execute</Typography>
+                        <Typography>Exécuter</Typography>
                     </Grid>
                 </CustomButton> 
             </Grid>

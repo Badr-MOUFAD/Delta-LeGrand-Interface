@@ -9,7 +9,7 @@ import { CustomButton, CustomTextField } from './CustomCoreComponent';
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        paddingLeft: "20px",
+        paddingLeft: "0px",
     },
     textField: {
         marginTop: "0px",
@@ -117,7 +117,7 @@ export default function NacellePlateauTab(props) {
                 <CustomButton>
                     <Grid container justify="space-between">
                         <SendRoundedIcon />
-                        <Typography>Execute</Typography>
+                        <Typography>Exécuter</Typography>
                     </Grid>
                 </CustomButton>
             </Grid>

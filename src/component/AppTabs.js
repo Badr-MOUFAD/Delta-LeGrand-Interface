@@ -21,11 +21,13 @@ const useStyles = makeStyles((theme) => ({
         height: "100%"
     },
     mainTab: {
-        minWidth: "50px", 
-        fontSize: "11px"
+        minWidth: "50px",
     },
     tab: {
-        backgroundColor: "#289C6F"
+        backgroundColor: "#289C6F",
+    },
+    tabLabel: {
+        textTransform: 'none',
     }
 }));
 
@@ -33,29 +35,29 @@ const tabs = {
     command: {
         "Nacelle": {
             index: "0",
-            icon: <CreateIcon />
+            icon: <CreateIcon fontSize="small"/>
         },
         "Plateau": {
             index: "1",
-            icon: <CropDinIcon />
+            icon: <CropDinIcon fontSize="small"/>
         },
         "Plateau\nNacelle": {
             index: "2",
-            icon: <BorderColorIcon />
+            icon: <BorderColorIcon fontSize="small"/>
         },
         "Fichier\nde point":{
             index: "3",
-            icon: <DescriptionOutlinedIcon />
+            icon: <DescriptionOutlinedIcon fontSize="small"/>
         }
     },
     other: {
-        "Settings": {
+        "Outils": {
             index: "4",
-            icon: <SettingsIcon />
+            icon: <SettingsIcon fontSize="small"/>
         },
         "Info": {
             index: "5",
-            icon: <InfoIcon />
+            icon: <InfoIcon fontSize="small"/>
         }
     }
 }
@@ -83,6 +85,7 @@ export default function AppTabs(props) {
                         label={tab}
                         value={tabs.command[tab].index}
                         icon={tabs.command[tab].icon}
+                        classes={{ labelIcon: classes.tabLabel }}
                         />
                 )}
             </Tabs>
@@ -99,6 +102,7 @@ export default function AppTabs(props) {
                         label={tab}
                         value={tabs.other[tab].index}
                         icon={tabs.other[tab].icon}
+                        classes={{ labelIcon: classes.tabLabel }}
                         />
                 )}
             </Tabs>
