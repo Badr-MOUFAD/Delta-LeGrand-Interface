@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppBar, Toolbar, Typography, Grid, IconButton } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Grid, IconButton, Paper } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 import CropSquareIcon from '@material-ui/icons/CropSquare';
@@ -9,6 +9,13 @@ import RemoveIcon from '@material-ui/icons/Remove';
 
 
 const useStyles = makeStyles((theme) => ({
+    brand: {
+        marginLeft: '85px',
+        paddingLeft: "20px",
+        width: "260px",
+        backgroundColor: "#0F5A73",
+        color: "white",
+    },
     appBar: {
         backgroundColor: '#289C6F',
         marginBottom: "10px"
@@ -26,9 +33,11 @@ export default function MenuBar(props) {
         <AppBar position="static" classes={{ root: classes.appBar}}>
             <Grid container justify="space-between">
                 <Toolbar variant="dense">
-                  <Typography style={{ marginLeft: '85px'}}>
-                    Delta Le <b>Grand</b>
-                  </Typography>
+                    <Paper className={classes.brand} variant="outlined">
+                        <Typography>
+                            Delta Le <b>Grand</b>
+                        </Typography>
+                    </Paper>
                 </Toolbar>
                 <Grid>
                     <IconButton><RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar}}/></IconButton>

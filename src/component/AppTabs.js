@@ -13,8 +13,6 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import SettingsIcon from '@material-ui/icons/Settings';
 import InfoIcon from '@material-ui/icons/Info';
 
-import { CustomTabs } from "./CustomCoreComponent"; 
-
 
 const useStyles = makeStyles((theme) => ({
     container: {

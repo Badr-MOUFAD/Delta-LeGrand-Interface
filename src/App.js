@@ -10,6 +10,8 @@ import { deltaSelectors, changePosition } from '../src/redux/DeltaCommandSlice';
 import MenuBar from "./component/MenuBar";
 import  AppTabs from './component/AppTabs';
 import AppCommandPanel from './component/AppCommandPanel';
+import PositionChart from './component/PositionChart';
+import TiltingChart from "./component/TiltingChart";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -51,12 +53,12 @@ export default function App(props) {
             <Grid className={classes.subContainer} item xs={8}>
                 {/* nacelle position */}
                 <Paper className={classes.graphContainer} variant="outlined">
-                    
+                    <PositionChart />
                 </Paper>
 
                 {/* plateau tilting */}
                 <Paper className={classes.graphContainer} variant="outlined">
-                   
+                    <TiltingChart />
                 </Paper>
             </Grid> 
         </Grid>

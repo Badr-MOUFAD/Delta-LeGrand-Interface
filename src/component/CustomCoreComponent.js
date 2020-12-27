@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { TextField, Button, Tabs } from "@material-ui/core";
+
+import Chart from "chart.js";
 
 
 export const CustomTextField = withStyles({
@@ -31,10 +33,32 @@ export const CustomButton = withStyles((theme) => ({
   }))(Button);
 
 
-export const CustomTabs = withStyles((them) => ({
-  indicator: {
-    '& .MuiTabs-indicator': {
-      color: '#289C6F',
-    }
+export function ChartComponent(props) {
+  const height = props.height;
+  const width = props.width;
+  const chartProps = props.chartProps;
+
+  const chartId = props.id;
+  const containerId = "static-container-chart-component-" + chartId;
+
+  const mountingFunction = () => {
+    const containerElement = document.getElementById(containerId);
+    containerElement.innerHTML = `<canvas id=${chartId} width="${width}px" height="${height}px"></canvas>`;
+
+    window[chartId] = new Chart(chartId, chartProps);
   }
-}))(Tabs);
+
+  useEffect(() => {
+    mountingFunction();
+
+    return () => {
+      const chartElement = document.getElementById(chartId);
+
+      if(chartElement) {
+        chartElement.remove();
+      }
+    }
+  }, [chartProps])
+
+  return <div id={containerId}></div>
+}

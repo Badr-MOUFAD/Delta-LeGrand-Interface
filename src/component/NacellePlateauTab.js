@@ -1,5 +1,8 @@
 import React, { useReducer } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { changePosition, changeTilting } from '../redux/DeltaCommandSlice';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
@@ -30,6 +33,7 @@ const workspaceHeight = 1200;
 
 export default function NacellePlateauTab(props) {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     const textFieldsReducer = (state, action) => {
         return {
@@ -61,6 +65,30 @@ export default function NacellePlateauTab(props) {
 
     const [textFields, dispatchTextFields] = useReducer(textFieldsReducer, { x: "", y: "", z: "", phi: "", theta: ""});
     const [errorTextFields, dispatchError] = useReducer(errorReducer, { x: false, y: false, z: false, phi: false, theta: false});
+
+    const executeHandler = () => {
+        const { x, y, z } = textFields; 
+        const { phi, theta } = textFields;
+
+        if(!(x && y && z)) {
+            return ;
+        }
+
+        if(!(phi && theta)) {
+            return ;
+        }
+
+        if(errorTextFields.x || errorTextFields.y || errorTextFields.z) {
+            return ;
+        }
+
+        if(errorTextFields.phi || errorTextFields.theta) {
+            return ;
+        }
+
+        dispatch(changePosition({ x, y, z }));
+        dispatch(changeTilting({ phi, theta }));
+    } 
 
     return(
         <Grid container>
@@ -114,7 +142,7 @@ export default function NacellePlateauTab(props) {
             </Grid>
 
             <Grid className={classes.submitButton} container alignContent="center">
-                <CustomButton>
+                <CustomButton onClick={executeHandler}>
                     <Grid container justify="space-between" alignItems="center">
                         <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>

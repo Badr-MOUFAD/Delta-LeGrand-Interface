@@ -1,5 +1,8 @@
 import React, { useReducer } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { changeTilting } from '../redux/DeltaCommandSlice';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
@@ -28,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PlateauTab(props) {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     const textFieldsReducer = (state, action) => {
         return {
@@ -50,6 +54,20 @@ export default function PlateauTab(props) {
 
     const [textFields, dispatchTextFields] = useReducer(textFieldsReducer, { phi: "", theta: "" });
     const [errorTextFields, dispatchError] = useReducer(errorReducer, { phi: false, theta: false });
+
+    const executeHandler = () => {
+        const { phi, theta } = textFields;
+
+        if(!(phi && theta)) {
+            return ;
+        }
+
+        if(errorTextFields.phi || errorTextFields.theta) {
+            return ;
+        }
+
+        dispatch(changeTilting({ phi, theta }));
+    }
 
     return(
         <Grid container>
@@ -76,7 +94,7 @@ export default function PlateauTab(props) {
             </Grid>
 
             <Grid className={classes.submitButton} container alignContent="center">
-                <CustomButton>
+                <CustomButton onClick={executeHandler}>
                     <Grid container justify="space-between" alignItems="center">
                         <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>

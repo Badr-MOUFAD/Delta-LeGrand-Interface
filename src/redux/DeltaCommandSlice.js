@@ -10,7 +10,8 @@ const initialState = {
     tilting: {
         phi: 0,
         theta: 0
-    }
+    },
+    previousXYPostions: [{ x: 0, y: 0 }]
 }
 
 export const deltaCommandSlice = createSlice({
@@ -18,7 +19,10 @@ export const deltaCommandSlice = createSlice({
     initialState: initialState,
     reducers: {
         changePosition: (state, action) => {
-            state.position = {...state.position, ...action.payload};
+            const { x, y, z } = action.payload;
+
+            state.previousXYPostions.push({ x, y });
+            state.position = {...state.position, x, y, z };
         },
         changeTilting: (state, action) => {
             state.tilting = {...state.tilting, ...action.payload};
@@ -30,8 +34,9 @@ export const deltaCommandSlice = createSlice({
 export const deltaSelectors = {
     postion: (state) => state.deltaCommand.position,
     tilting: (state) => state.deltaCommand.tilting,
+    previousXYPostions: (state) => state.deltaCommand.previousXYPostions,
 }
 
-export const { changePosition, changeTilting } = deltaCommandSlice.actions;
+export const { changePosition, changeTilting, addPreviousXYPosition } = deltaCommandSlice.actions;
 
 export default deltaCommandSlice.reducer;
