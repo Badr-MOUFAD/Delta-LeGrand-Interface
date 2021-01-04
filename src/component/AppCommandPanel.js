@@ -1,21 +1,18 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { windowSlectors } from '../redux/WindowSlice';
-
-import { deltaSelectors, changePosition } from '../redux/DeltaCommandSlice';
 
 import { TabContext, TabPanel } from '@material-ui/lab';
 
 import NacelleTab from './NacelleTab';
 import PlateauTab from './PlateauTab';
 import NacellePlateauTab from "./NacellePlateauTab";
+import FilePointsTab from './FilePointsTab';
+import SettingTab from "./SettingsTab";
 
 
 export default function CommandPanedComponent(props) {
-    const dispatch = useDispatch();
-    const position = useSelector(deltaSelectors.postion);
-
     const activeTab = useSelector(windowSlectors.activeTab);
 
     return(
@@ -30,6 +27,14 @@ export default function CommandPanedComponent(props) {
             
             <TabPanel value="2">
                 <NacellePlateauTab />
+            </TabPanel>
+
+            <TabPanel value="3">
+                <FilePointsTab />
+            </TabPanel>
+
+            <TabPanel value="4">
+                <SettingTab />
             </TabPanel>
         </TabContext>
     );

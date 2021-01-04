@@ -92,7 +92,7 @@ export default function NacellePlateauTab(props) {
 
     return(
         <Grid container>
-            <Typography variant="subtitle1">Plateau</Typography>
+            <Typography variant="subtitle1">Nacelle et Plateau</Typography>
             <Grid container className={classes.container} style={{ marginTop: "25px"}}>
                 <Typography variant='subtitle2'>Position</Typography>
                 <Grid container>

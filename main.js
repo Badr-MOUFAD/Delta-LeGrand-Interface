@@ -18,8 +18,9 @@ function createWindow() {
       nodeIntegration: true,
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,
-      //preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
+    // disable menubar
     frame: false
   })
 

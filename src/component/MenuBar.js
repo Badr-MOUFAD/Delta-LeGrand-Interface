@@ -40,9 +40,9 @@ export default function MenuBar(props) {
                     </Paper>
                 </Toolbar>
                 <Grid>
-                    <IconButton><RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar}}/></IconButton>
-                    <IconButton>< CropSquareIcon fontSize="small" classes={{ root: classes.iconAppBar}}/></IconButton>
-                    <IconButton><CloseIcon fontSize="small" classes={{ root: classes.iconAppBar}}/></IconButton>
+                    <IconButton><RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar }}/></IconButton>
+                    <IconButton>< CropSquareIcon fontSize="small" classes={{ root: classes.iconAppBar }}/></IconButton>
+                    <IconButton><CloseIcon fontSize="small" classes={{ root: classes.iconAppBar }}/></IconButton>
                 </Grid>
             </Grid>
         </AppBar>
