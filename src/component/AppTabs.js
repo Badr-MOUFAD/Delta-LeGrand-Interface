@@ -12,6 +12,7 @@ import BorderColorIcon from '@material-ui/icons/BorderColor';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import SettingsIcon from '@material-ui/icons/Settings';
 import InfoIcon from '@material-ui/icons/Info';
+import ChangeHistoryRoundedIcon from '@material-ui/icons/ChangeHistoryRounded';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +38,7 @@ const tabs = {
         },
         "Plateau": {
             index: "1",
-            icon: <CropDinIcon fontSize="small"/>
+            icon: <ChangeHistoryRoundedIcon fontSize="small"/>
         },
         "Plateau\nNacelle": {
             index: "2",

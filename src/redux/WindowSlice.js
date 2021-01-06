@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     activeTab: "0",
-    activePort: "COM5",
+    activePort: "",
 }
 
 export const windowSlice = createSlice({

@@ -2,11 +2,8 @@ import React, { useState, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography, Divider, Grid } from '@material-ui/core';
-import { Gird, Paper, AppBar, Toolbar, IconButton, ButtonGroup } from '@material-ui/core';
-import { TabPanel, TabContext } from "@material-ui/lab";
+import { Grid, Paper } from '@material-ui/core';
 
-import { deltaSelectors, changePosition } from '../src/redux/DeltaCommandSlice';
 import MenuBar from "./component/MenuBar";
 import  AppTabs from './component/AppTabs';
 import AppCommandPanel from './component/AppCommandPanel';

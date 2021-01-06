@@ -66,6 +66,7 @@ contextBridge.exposeInMainWorld(
                 });
 
                 port.pipe(parser);
+                port.open();
             }
 
             if(port.isOpen) {
