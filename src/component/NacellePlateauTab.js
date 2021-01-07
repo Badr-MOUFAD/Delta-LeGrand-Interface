@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
-import { useDispatch } from 'react-redux';
-import { changePosition, changeTilting } from '../redux/DeltaCommandSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { changePosition, changeTilting, deltaSelectors } from '../redux/DeltaCommandSlice';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
@@ -88,6 +88,9 @@ export default function NacellePlateauTab(props) {
 
         dispatch(changePosition({ x, y, z }));
         dispatch(changeTilting({ phi, theta }));
+
+        // send command position then tilting
+        window.SerialAPI.send(`i ${textFields.x} ${textFields.y} ${textFields.z} ${textFields.phi} ${textFields.theta}`);
     } 
 
     return(

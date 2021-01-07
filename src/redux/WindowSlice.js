@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     activeTab: "0",
     activePort: "",
+    receivedData: ["test1"]
 }
 
 export const windowSlice = createSlice({
@@ -18,6 +19,9 @@ export const windowSlice = createSlice({
             window.SerialAPI.changePortName(newPortName);
             state.activePort = newPortName;
         },
+        updateReceivedData: (state, action) => {
+            state.receivedData.push(action.payload);
+        }
     }
 })
 
@@ -25,8 +29,9 @@ export const windowSlice = createSlice({
 export const windowSlectors = {
     activeTab: (state) => state.window.activeTab,
     activePort: (state) => state.window.activePort,
+    receivedData: (state) => state.window.receivedData,
 }
 
-export const { changeActiveTab, changePortName } = windowSlice.actions;
+export const { changeActiveTab, changePortName, updateReceivedData } = windowSlice.actions;
 
 export default windowSlice.reducer;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
-import { windowSlectors } from '../redux/WindowSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateReceivedData, windowSlectors } from '../redux/WindowSlice';
 
 import { TabContext, TabPanel } from '@material-ui/lab';
 
@@ -36,6 +36,31 @@ export default function CommandPanedComponent(props) {
             <TabPanel value="4">
                 <SettingTab />
             </TabPanel>
+
+            <TabPanel value="5">
+                <InfoTab />
+            </TabPanel>
         </TabContext>
+    );
+}
+
+
+export function InfoTab(props) {
+    const dispatch = useDispatch();
+    const receivedData = useSelector(windowSlectors.receivedData);
+
+    useEffect(() => {
+        window.SerialAPI.read((data) => dispatch(updateReceivedData(data)));
+    }, [])
+
+    return(
+        <div>
+            <h4>info</h4>
+            <ol>
+                {receivedData.map((message, i) => 
+                    <li key={`info-data-${i}`}>{message}</li>
+                )}
+            </ol>
+        </div>
     );
 }

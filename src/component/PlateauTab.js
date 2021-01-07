@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
-import { useDispatch } from 'react-redux';
-import { changeTilting } from '../redux/DeltaCommandSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTilting, deltaSelectors } from '../redux/DeltaCommandSlice';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
@@ -67,6 +67,9 @@ export default function PlateauTab(props) {
         }
 
         dispatch(changeTilting({ phi, theta }));
+
+        // send command 
+        window.SerialAPI.send(`t ${textFields.phi} ${textFields.theta}`);
     }
 
     return(

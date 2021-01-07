@@ -26,6 +26,9 @@ export const deltaCommandSlice = createSlice({
         },
         changeTilting: (state, action) => {
             state.tilting = {...state.tilting, ...action.payload};
+        },
+        clearPreviousXYPositions: (state, action) => {
+            state.previousXYPostions = [{ x: state.position.x, y: state.position.y }];
         }
     }
 });
@@ -37,6 +40,6 @@ export const deltaSelectors = {
     previousXYPostions: (state) => state.deltaCommand.previousXYPostions,
 }
 
-export const { changePosition, changeTilting, addPreviousXYPosition } = deltaCommandSlice.actions;
+export const { changePosition, changeTilting, addPreviousXYPosition, clearPreviousXYPositions } = deltaCommandSlice.actions;
 
 export default deltaCommandSlice.reducer;
