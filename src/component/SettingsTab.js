@@ -49,17 +49,7 @@ export default function SettingsTab(props) {
     const dispatch = useDispatch();
 
     const activePort = useSelector(windowSlectors.activePort);
-    const [availablePorts, setAvailablePorts] = useState([]);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            window.SerialAPI.selectAvailablePorts(setAvailablePorts);
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        }
-    }, []);
+    const availablePorts = useSelector(windowSlectors.availablePorts);
 
     return(
         <Grid container>
@@ -141,12 +131,12 @@ export function OtherToolsComponent(props) {
         {
             primary: "Initialiser la nacelle",
             icon: <EditRoundedIcon fontSize="small"/>,
-            onClick: () => {},
+            onClick: () => window.SerialAPI.send("i"),
         },
         {
             primary: "Inialiser le plateau",
             icon: <ChangeHistoryRoundedIcon fontSize="small"/>,
-            onClick: () => {},
+            onClick: () => window.SerialAPI.send("l"),
         },
         {
             primary: "Effacer la trajectoire",

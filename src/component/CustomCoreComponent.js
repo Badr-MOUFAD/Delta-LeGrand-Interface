@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { TextField, Button, Tabs } from "@material-ui/core";
+import { TextField, Button, Tabs, LinearProgress } from "@material-ui/core";
 
 import Chart from "chart.js";
 
@@ -18,7 +18,7 @@ export const CustomTextField = withStyles({
   })(TextField);
 
   
-export const CustomButton = withStyles((theme) => ({
+export const CustomButtonFill = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText('#289C6F'),
       backgroundColor: '#289C6F',
@@ -31,6 +31,26 @@ export const CustomButton = withStyles((theme) => ({
       },
     },
   }))(Button);
+
+
+export const CustomButtonOutlined = withStyles((theme) => ({
+  root: {
+    color: '#289C6F',
+    borderColor: '#289C6F',
+    backgroundColor: 'white',
+    textTransform: 'none',
+    paddingRight: "15px",
+    paddingLeft: "15px",
+    minWidth: "120px",
+  },
+}))(Button);
+
+
+export const CustomLinearProgress = withStyles((theme) => ({
+  bar: {
+    backgroundColor: '#289C6F',
+  },
+}))(LinearProgress);
 
 
 export function ChartComponent(props) {

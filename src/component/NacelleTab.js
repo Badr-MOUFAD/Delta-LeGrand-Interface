@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 
-import { CustomButton, CustomTextField } from './CustomCoreComponent';
+import { CustomButtonFill, CustomTextField } from './CustomCoreComponent';
 
 
 const workspaceRadius = 340;
@@ -72,7 +72,7 @@ export default function NacelleTab(props) {
         dispatch(changePosition({ x, y, z }));
 
         // send command 
-        window.SerialAPI.send(`p ${textFields.x} ${textFields.y} ${textFields.z}`)
+        window.SerialAPI.send(`n ${textFields.x} ${textFields.y} ${textFields.z}`)
     }
 
     return(
@@ -100,12 +100,12 @@ export default function NacelleTab(props) {
             </Grid>
 
             <Grid className={classes.submitButton} container alignContent="center">
-                <CustomButton onClick={executeHandler}>
+                <CustomButtonFill onClick={executeHandler}>
                     <Grid container justify="space-between" alignItems="center">
                         <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>
                     </Grid>
-                </CustomButton>
+                </CustomButtonFill>
             </Grid> 
         </Grid>
     );

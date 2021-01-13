@@ -13,8 +13,10 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
     height: 800,
+    resizable: false,
     backgroundColor: "white",
     webPreferences: {
+      enableRemoteModule: true,
       nodeIntegration: true,
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,

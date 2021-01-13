@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 
-import { CustomButton, CustomTextField } from './CustomCoreComponent';
+import { CustomButtonFill, CustomTextField } from './CustomCoreComponent';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,7 +90,7 @@ export default function NacellePlateauTab(props) {
         dispatch(changeTilting({ phi, theta }));
 
         // send command position then tilting
-        window.SerialAPI.send(`i ${textFields.x} ${textFields.y} ${textFields.z} ${textFields.phi} ${textFields.theta}`);
+        window.SerialAPI.send(`d ${textFields.x} ${textFields.y} ${textFields.z} ${textFields.phi} ${textFields.theta}`);
     } 
 
     return(
@@ -145,12 +145,12 @@ export default function NacellePlateauTab(props) {
             </Grid>
 
             <Grid className={classes.submitButton} container alignContent="center">
-                <CustomButton onClick={executeHandler}>
+                <CustomButtonFill onClick={executeHandler}>
                     <Grid container justify="space-between" alignItems="center">
                         <SendRoundedIcon fontSize="small"/>
                         <Typography>Exécuter</Typography>
                     </Grid>
-                </CustomButton>
+                </CustomButtonFill>
             </Grid>
         </Grid>
     );

@@ -1,5 +1,9 @@
-const SerialPort = require('serialport');
-const { contextBridge } = require("electron");
+const { contextBridge, remote } = require("electron");
+
+const SerialPort = require("serialport");
+const fs = require("fs");
+const csv = require('csv-parser');
+const path = require('path'); 
 
 // port instance 
 let port = new SerialPort("COM5", {
@@ -78,5 +82,62 @@ contextBridge.exposeInMainWorld(
                 callback();
             }
         },
+    }
+)
+
+// building upload file API
+const dialog = remote.dialog;
+
+contextBridge.exposeInMainWorld(
+    'Upload', {
+        openDialog: (callback) => {
+            dialog.showOpenDialog({ 
+                title: 'Séléctionner un fichier csv', 
+                defaultPath: path.join(__dirname, '../assets/'), 
+                buttonLabel: 'Upload', 
+                // Restricting the user to only csv files. 
+                filters: [ 
+                    { 
+                        name: 'Fichier csv', 
+                        extensions: ['csv'] 
+                    },], 
+                // Specifying the File Selector Property 
+                properties: ['openFile'] 
+            }).then(file => {  
+                if (!file.canceled) { 
+                    const filePath = file.filePaths[0].toString(); 
+                    
+                    // passing filePath to callback
+                    callback(filePath);
+                }   
+            }).catch(err => { 
+                console.log(err) 
+            }); 
+        },
+        readFile: (pathName, callback) => {
+            /* checking that pathname is not empty*/
+            if(!pathName) {
+                return
+            }
+            const data = [];
+
+            fs.createReadStream(pathName)
+                .pipe(csv())
+                .on('data', (row) => {
+                  data.push(row);
+                })
+                .on('end', () => {
+                  callback(data);
+                });
+        },
+    }
+);
+
+// API for browser window
+contextBridge.exposeInMainWorld(
+    'windowAPI', {
+        close: () => remote.getCurrentWindow().close(),
+        maximaze: () => remote.getCurrentWindow().maximize(),
+        minimize: () => remote.getCurrentWindow().minimize(),
     }
 )

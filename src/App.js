@@ -1,5 +1,5 @@
-import React, { useState, useReducer } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper } from '@material-ui/core';
@@ -9,6 +9,8 @@ import  AppTabs from './component/AppTabs';
 import AppCommandPanel from './component/AppCommandPanel';
 import PositionChart from './component/PositionChart';
 import TiltingChart from "./component/TiltingChart";
+
+import { updateAvailablePorts } from "./redux/WindowSlice";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,13 +22,27 @@ const useStyles = makeStyles((theme) => ({
     },
     graphContainer: {
         marginBottom: "10px",
-        minHeight: "100px"
+        minHeight: "100px",
     },
 }));
 
 
 export default function App(props) {
     const classes = useStyles();
+
+    // component did mount set intervall
+    // refreshing to detect new available ports
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const idRefresh = setInterval(() => {
+            window.SerialAPI.selectAvailablePorts((portList) => dispatch(updateAvailablePorts(portList)));
+        }, 1000);
+
+        return () => {
+            clearInterval(idRefresh);
+        }
+    }, [])
+    
 
     return (
         <Grid className={classes.container} container spacing={2}> 

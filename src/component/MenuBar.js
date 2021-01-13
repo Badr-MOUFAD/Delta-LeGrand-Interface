@@ -40,9 +40,15 @@ export default function MenuBar(props) {
                     </Paper>
                 </Toolbar>
                 <Grid>
-                    <IconButton><RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar }}/></IconButton>
-                    <IconButton>< CropSquareIcon fontSize="small" classes={{ root: classes.iconAppBar }}/></IconButton>
-                    <IconButton><CloseIcon fontSize="small" classes={{ root: classes.iconAppBar }}/></IconButton>
+                    <IconButton onClick={() => window.windowAPI.minimize()}>
+                        <RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
+                    </IconButton>
+                    <IconButton onClick={() => {}}>
+                        < CropSquareIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
+                    </IconButton>
+                    <IconButton onClick={() => window.windowAPI.close()}>
+                        <CloseIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
+                    </IconButton>
                 </Grid>
             </Grid>
         </AppBar>
