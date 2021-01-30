@@ -24,7 +24,7 @@ export default function PositionChart(props) {
                     pointRadius: 2,
                     showLine: true,
                     fill: false,
-                    tension: 0.15,
+                    tension: 0.1,
                     stepped: false,
                 },
                     {

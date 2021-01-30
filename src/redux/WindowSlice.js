@@ -4,6 +4,7 @@ const initialState = {
     activeTab: "0",
     activePort: "",
     availablePorts: [],
+    isConnected: false,
     selectedFilePathName: "",
     buffer: [],
     bufferIndexOfActualSentCommand: 0,
@@ -23,6 +24,15 @@ export const windowSlice = createSlice({
 
             window.SerialAPI.changePortName(newPortName);
             state.activePort = newPortName;
+        },
+        updateConnection: (state) => {
+            if(state.availablePorts.includes(state.activePort)) {
+                state.isConnected = true;
+            }
+            else {
+                state.isConnected = false;
+                state.activePort = "";
+            }
         },
         updateAvailablePorts: (state, action) => {
             state.availablePorts = action.payload;
@@ -56,6 +66,7 @@ export const windowSlectors = {
     activeTab: (state) => state.window.activeTab,
     activePort: (state) => state.window.activePort,
     availablePorts: (state) => state.window.availablePorts,
+    isConnected: (state) => state.window.isConnected,
     receivedData: (state) => state.window.receivedData,
     selectedFilePathName: (state) => state.window.selectedFilePathName,
     buffer: (state) => state.window.buffer,
@@ -67,6 +78,7 @@ export const {
     changeActiveTab, 
     changePortName, 
     updateAvailablePorts, 
+    updateConnection,
     updateReceivedData, 
     changeSelectedFilePathName,
     fillBuffer,

@@ -7,6 +7,7 @@
     "start": "electron .",
     "watch": "webpack --config webpack.common.js --watch",
     "rebuild": "electron-rebuild",
+    "build": "electron-packager . delta-le-grand-beta-v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -38,6 +39,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
+    "react-reveal": "^1.2.2",
     "serialport": "^9.0.4"
   }
 }

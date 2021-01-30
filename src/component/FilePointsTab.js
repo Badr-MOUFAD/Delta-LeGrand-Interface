@@ -8,6 +8,8 @@ import {
     updateReceivedData,
     windowSlectors } from "../redux/WindowSlice";
 
+import { changePosition } from "../redux/DeltaCommandSlice";
+
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Tooltip, CircularProgress, } from '@material-ui/core';
 
@@ -137,8 +139,10 @@ export function ReadExecuteFile(props) {
         console.log(command);
         if(command) {
             // send command to serial port
-            window.SerialAPI.send(`b ${command.x} ${command.y} ${command.z}`);
-            dispatch(setBufferIndexOfActualSentCommand(indexActualCommand + 1))
+            const { x, y, z} = command;
+            window.SerialAPI.send(`n ${x} ${y} ${z}`);
+            dispatch(setBufferIndexOfActualSentCommand(indexActualCommand + 1));
+            dispatch(changePosition({ x, y, z }));
         }
 
     }, [trigger, buffer])

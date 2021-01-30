@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     },
     iconAppBar: {
         color: "white",
+    },
+    appBarSimple: {
+        backgroundColor: '#289C6F',
     }
 }));
 
@@ -40,6 +43,29 @@ export default function MenuBar(props) {
                     </Paper>
                 </Toolbar>
                 <Grid>
+                    <IconButton onClick={() => window.windowAPI.minimize()}>
+                        <RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
+                    </IconButton>
+                    <IconButton onClick={() => {}}>
+                        < CropSquareIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
+                    </IconButton>
+                    <IconButton onClick={() => window.windowAPI.close()}>
+                        <CloseIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
+                    </IconButton>
+                </Grid>
+            </Grid>
+        </AppBar>
+    );
+}
+
+
+export function MenuBarSimple(props) {
+    const classes = useStyles();
+
+    return(
+        <AppBar className={classes.appBarSimple} position="static">
+            <Grid container justify="flex-end">
+                <Grid item>
                     <IconButton onClick={() => window.windowAPI.minimize()}>
                         <RemoveIcon fontSize="small" classes={{ root: classes.iconAppBar }}/>
                     </IconButton>
