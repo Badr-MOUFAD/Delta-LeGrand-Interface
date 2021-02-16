@@ -8,16 +8,16 @@ import {
     updateReceivedData,
     windowSlectors } from "../redux/WindowSlice";
 
-import { changePosition } from "../redux/DeltaCommandSlice";
+import { changePosition, changeTilting } from "../redux/DeltaCommandSlice";
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Tooltip, CircularProgress, } from '@material-ui/core';
+import { Grid, Typography, Tooltip } from '@material-ui/core';
 
 import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
 import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 
-import { CustomButtonOutlined, CustomButtonFill } from "./CustomCoreComponent";
+import { CustomButtonOutlined } from "./CustomCoreComponent";
 import { CustomLinearProgress as LinearProgress } from "./CustomCoreComponent";
 
 
@@ -134,15 +134,19 @@ export function ReadExecuteFile(props) {
         }
 
         const indexActualCommand = bufferIndexOfActualSentCommand;
-        const command = buffer[indexActualCommand]
+        const command = buffer[indexActualCommand];
 
         console.log(command);
-        if(command) {
+        if(command) {  
+            const { cmd, x, y, z, phi, theta } = command;
+
             // send command to serial port
-            const { x, y, z} = command;
-            window.SerialAPI.send(`n ${x} ${y} ${z}`);
+            window.SerialAPI.send(`${cmd} ${x} ${y} ${z} ${phi} ${theta}`);
             dispatch(setBufferIndexOfActualSentCommand(indexActualCommand + 1));
+            
+            // update graphs
             dispatch(changePosition({ x, y, z }));
+            dispatch(changeTilting({ phi, theta }));
         }
 
     }, [trigger, buffer])

@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Tabs, Tab, Grid } from "@material-ui/core";
 
 import CreateIcon from '@material-ui/icons/Create';
-import CropDinIcon from '@material-ui/icons/CropDin';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -71,40 +70,44 @@ export default function AppTabs(props) {
     
     return(
         <Grid className={classes.container} container direction="column" justify="space-between">
-            <Tabs 
-                orientation='vertical' 
-                value={(Number(activeTab) > 3) ? false : activeTab} 
-                onChange={(e, newValue) => dispatch(changeActiveTab(newValue))}
-                classes={{ indicator: classes.tab }}
-                >
-                {Object.keys(tabs.command).map((tab, i) => 
-                    <Tab 
-                        key={`command-${tab}${i}`}
-                        className={classes.mainTab}
-                        label={tab}
-                        value={tabs.command[tab].index}
-                        icon={tabs.command[tab].icon}
-                        classes={{ labelIcon: classes.tabLabel }}
-                        />
-                )}
-            </Tabs>
-            <Tabs 
-                orientation='vertical' 
-                value={(Number(activeTab) <= 3) ? false : activeTab}
-                onChange={(e, newValue) => dispatch(changeActiveTab(newValue))}
-                classes={{ indicator: classes.tab }}
-                >
-                {Object.keys(tabs.other).map((tab, i) => 
-                    <Tab 
-                        key={`other-${tab}${i}`}   
-                        className={classes.mainTab}
-                        label={tab}
-                        value={tabs.other[tab].index}
-                        icon={tabs.other[tab].icon}
-                        classes={{ labelIcon: classes.tabLabel }}
-                        />
-                )}
-            </Tabs>
+            <Grid item>
+                <Tabs 
+                    orientation='vertical' 
+                    value={(Number(activeTab) > 3) ? false : activeTab} 
+                    onChange={(e, newValue) => dispatch(changeActiveTab(newValue))}
+                    classes={{ indicator: classes.tab }}
+                    >
+                    {Object.keys(tabs.command).map((tab, i) => 
+                        <Tab 
+                            key={`command-${tab}${i}`}
+                            className={classes.mainTab}
+                            label={tab}
+                            value={tabs.command[tab].index}
+                            icon={tabs.command[tab].icon}
+                            classes={{ labelIcon: classes.tabLabel }}
+                            />
+                    )}
+                </Tabs>
+            </Grid>
+            <Grid item>
+                <Tabs 
+                    orientation='vertical' 
+                    value={(Number(activeTab) <= 3) ? false : activeTab}
+                    onChange={(e, newValue) => dispatch(changeActiveTab(newValue))}
+                    classes={{ indicator: classes.tab }}
+                    >
+                    {Object.keys(tabs.other).map((tab, i) => 
+                        <Tab 
+                            key={`other-${tab}${i}`}   
+                            className={classes.mainTab}
+                            label={tab}
+                            value={tabs.other[tab].index}
+                            icon={tabs.other[tab].icon}
+                            classes={{ labelIcon: classes.tabLabel }}
+                            />
+                    )}
+                </Tabs>
+            </Grid>
         </Grid>
     );
 }

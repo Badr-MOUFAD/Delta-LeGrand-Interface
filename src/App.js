@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import Fade from 'react-reveal/Fade';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, Divider } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 
 import TouchAppIconRounded from '@material-ui/icons/TouchAppRounded';
 
 import MenuBar, { MenuBarSimple } from "./component/MenuBar";
-import  AppTabs from './component/AppTabs';
+import AppTabs from './component/AppTabs';
 import AppCommandPanel from './component/AppCommandPanel';
 import PositionChart from './component/PositionChart';
 import TiltingChart from "./component/TiltingChart";
@@ -49,8 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function App(props) {
     const classes = useStyles();
-
-    
+  
     const dispatch = useDispatch();
     const isConnected = useSelector(windowSlectors.isConnected);
 
@@ -129,9 +128,7 @@ export function MainPage(props) {
             {/* side bar */}
             <Grid className={classes.subContainer} item xs={1} >
                 <Paper className={classes.subContainer} variant="outlined">
-                    <Fade>
                     <AppTabs />
-                    </Fade>
                 </Paper>
             </Grid>
 
@@ -139,7 +136,7 @@ export function MainPage(props) {
             <Grid className={classes.subContainer} item xs={3}>
                 <Paper className={classes.subContainer} variant="outlined">
                     <Fade>
-                    <AppCommandPanel />
+                        <AppCommandPanel />
                     </Fade>
                 </Paper>
             </Grid>
@@ -149,14 +146,14 @@ export function MainPage(props) {
                 {/* nacelle position */}
                 <Paper className={classes.graphContainer} variant="outlined">
                     <Fade>
-                    <PositionChart />
+                        <PositionChart />
                     </Fade>
                 </Paper>
 
                 {/* plateau tilting */}
                 <Paper className={classes.graphContainer} variant="outlined">
                     <Fade>
-                    <TiltingChart />
+                        <TiltingChart />
                     </Fade>
                 </Paper>
             </Grid> 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { TextField, Button, Tabs, LinearProgress } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
+import { TextField, Button, LinearProgress } from "@material-ui/core";
 
 import Chart from "chart.js";
 

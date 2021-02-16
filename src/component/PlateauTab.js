@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { changeTilting, deltaSelectors } from '../redux/DeltaCommandSlice';
+import { useDispatch } from 'react-redux';
+import { changeTilting } from '../redux/DeltaCommandSlice';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
@@ -12,6 +12,7 @@ import { CustomButtonFill, CustomTextField } from './CustomCoreComponent';
 
 const maxTheta = 15;
 const maxPhi = 180;
+const refZ = 900;
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -69,7 +70,7 @@ export default function PlateauTab(props) {
         dispatch(changeTilting({ phi, theta }));
 
         // send command 
-        window.SerialAPI.send(`p ${textFields.phi} ${textFields.theta}`);
+        window.SerialAPI.send(`p 0 0 ${refZ} ${textFields.phi} ${textFields.theta}`);
     }
 
     return(

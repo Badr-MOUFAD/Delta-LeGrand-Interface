@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { changePosition, deltaSelectors } from '../redux/DeltaCommandSlice'
+import { useDispatch } from 'react-redux';
+import { changePosition } from '../redux/DeltaCommandSlice'
 
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, Grid, Typography } from "@material-ui/core";
