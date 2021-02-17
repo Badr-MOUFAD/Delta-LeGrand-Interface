@@ -8,19 +8,19 @@ The 3D printer comes in the form of a **parallel linear delta robot** that has 6
 
 
 Our work focused mainly on:
-    - the conceptual design and 3D modeling of the robot namely the titling bed
-    - Simulation of movement, efforts, workspace, and precision
-    - Control of the robot via Arduino
-    - The conception of a user interface that eases the control of the robot
-    - Marketing of the project
+- the conceptual design and 3D modeling of the robot namely the titling bed
+- Simulation of movement, efforts, workspace, and precision
+- Control of the robot via Arduino
+- The conception of a user interface that eases the control of the robot
+- Marketing of the project
 
 
 
 
 # About this repository:
 This repository contains the code of the user interface. A user interface that was developed with two main purposes: 
-    - making possible the control of the robot for a usual user that does not have any knowledge in programming.
-    - exposing all the functionality offered by the robot while making the use of them easy.
+- making possible the control of the robot for a usual user that does not have any knowledge in programming.
+- exposing all the functionality offered by the robot while making the use of them easy.
 
 
 The solution developed comes in the form of a desktop application: where the lower system API was handled using `Node.js` and the graphical part built using web technologies mainly the frameworks `React.js` and `Material-UI`. Note that the state management of the app was insured by `Redux`.
