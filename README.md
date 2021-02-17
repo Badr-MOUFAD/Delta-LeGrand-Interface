@@ -24,13 +24,14 @@ This repository contains the code of the user interface. A user interface that w
 
 
 The solution developed comes in the form of a desktop application: where the lower system API was handled using `Node.js` and the graphical part built using web technologies mainly the frameworks `React.js` and `Material-UI`. Note that the state management of the app was insured by `Redux`.
-The desktop app was made possible through [Electron](https://www.electronjs.org/), a framework that enables the creation of desktop apps using web technologies. If you want to learn about the initial setups to use Electron, you can check my repository on integrating React with Electron at [this link](https://github.com/Badr-MOUFAD/electron-react-serialPort).
+The desktop app was made possible through `Electron`, a framework that enables the creation of desktop apps using web technologies. If you want to learn about the initial setups to use Electron, you can check my repository on integrating React with Electron at [this link](https://github.com/Badr-MOUFAD/electron-react-serialPort).
 
 
 
 # Contribution:
 If you want to use or adapt this app for your project, make sure to follow these steps:
-After cloning the repository hit the followings:
+
+After cloning the repository hit the followings commands
 1. `npm install` to install node modules
 2. `npm watch` to compile all JS files into a single one
 3. `npm rebuild` to re-compile the serialport modules and make them compatible with electron
